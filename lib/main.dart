@@ -33,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool? _jailbroken;
   bool? _developerMode;
-  int _counter = 0;
 
   @override
   void initState() {
@@ -62,12 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
       _jailbroken = jailbroken;
       _developerMode = developerMode;
     });
-  }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    if (_jailbroken == true) {
+      SystemNavigator.pop();
+    }
   }
 
   @override
@@ -87,11 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
